@@ -13,6 +13,8 @@ public class MovementController : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private Animator animator;
+
     private float horizontalInput;
     private bool jumpPressed;
     private bool isGrounded;
@@ -21,11 +23,13 @@ public class MovementController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
         if (Input.GetButtonDown("Jump"))
         {
