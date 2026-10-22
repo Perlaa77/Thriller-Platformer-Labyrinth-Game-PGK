@@ -12,6 +12,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
     private float horizontalInput;
     private bool jumpPressed;
     private bool isGrounded;
@@ -19,28 +20,30 @@ public class MovementController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        // Read input every frame
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        // Latch the jump press so FixedUpdate doesn't miss it
         if (Input.GetButtonDown("Jump"))
         {
             jumpPressed = true;
+        }
+
+        if (horizontalInput != 0)
+        {
+            sr.flipX = horizontalInput < 0;
         }
     }
 
     private void FixedUpdate()
     {
-        // Ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer) != null;
 
         rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
 
-        // Jump
         if (jumpPressed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);

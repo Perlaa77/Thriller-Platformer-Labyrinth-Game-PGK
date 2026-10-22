@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 225633657}
   - component: {fileID: 225633658}
   - component: {fileID: 225633659}
+  - component: {fileID: 225633660}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -228,7 +229,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -298,7 +299,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a0c6918a5b1ca44836f23e541f126a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementController
-  speed: 250
+  moveSpeed: 5
+  jumpForce: 12
+  groundCheck: {fileID: 840384309}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!95 &225633660
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225633654}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 837dbcd1a6a90634db78447ed8f7e403, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +560,7 @@ GameObject:
   - component: {fileID: 840384309}
   - component: {fileID: 840384308}
   - component: {fileID: 840384307}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
