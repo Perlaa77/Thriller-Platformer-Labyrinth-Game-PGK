@@ -1,7 +1,7 @@
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+public class Door : MonoBehaviour
 {
     [SerializeField] private Vector2 direction;
     [SerializeField] private float distance;
