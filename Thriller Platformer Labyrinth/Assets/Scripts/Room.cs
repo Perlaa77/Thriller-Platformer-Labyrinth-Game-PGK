@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Room : MonoBehaviour
 {
@@ -11,13 +12,23 @@ public class Room : MonoBehaviour
     [field: SerializeField] public bool connectLeft { get; set; }
 
     public int parity => (row + column) % 2;
+    private float roomPadding;
 
+    [SerializeField] private Door doorPrefab;
+    private List<Door> doors = new();
+    private static readonly Vector2[] doorPositions =
+    {
+        new(-8f, 1.8f), //top-left
+        new(8f, 1.8f), //top-right
+        new(8f, -5.3f), //bottom-right
+        new(-8f, -5.3f) //bottom-left
+    };
 
-
-    public void Init(int r, int c)
+    public void Init(int c, int r, float p)
     {
         this.row = r;
         this.column = c;
+        this.roomPadding = p;
     }
 
     public void Connect(int direction)
@@ -29,6 +40,11 @@ public class Room : MonoBehaviour
             case 2: connectBottom = true; break;
             case 3: connectLeft = true; break;
         }
+        Vector2 doorPosition = doorPositions[(direction + parity) % 4];
+        Door door = Instantiate(doorPrefab, transform);
+        door.transform.localPosition = doorPosition;
+        door.Init(parity, direction, roomPadding);
+        doors.Add(door);
     }
 
     public void DisconnectAll()
@@ -37,10 +53,11 @@ public class Room : MonoBehaviour
         this.connectRight = false;
         this.connectBottom = false;
         this.connectLeft = false;
+
+        foreach(Door door in doors)
+        {
+            Destroy(door.gameObject);
+        }
+        doors.Clear();
     }
-
-    //public void AddDoors()
-    //{
-
-    //}
 }

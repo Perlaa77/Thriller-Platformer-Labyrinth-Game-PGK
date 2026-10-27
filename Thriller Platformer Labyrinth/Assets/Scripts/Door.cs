@@ -1,17 +1,30 @@
-using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private Vector2 direction;
-    [SerializeField] private float distance;
+    private Vector2 direction = new(1, 0);
+    private static readonly float[] doorDistances =
+    {
+        3.7f, //top<->bottom
+        3.2f //right<->left
+    };
+    private float distance = 0;
+    public int roomParity = 0;
+    private static readonly Vector2Int[] doorDirections =
+    {
+        new(0, 1), //top
+        new(1, 0), //right
+        new(0, -1), //bottom
+        new(-1, 0) //left
+    };
 
     private Rigidbody2D player;
 
-    public void Init(Vector2 dir, float dist)
+    public void Init(int parity, int dir, float padding)
     {
-        this.direction = dir;
-        this.distance = dist;
+        this.roomParity = parity;
+        this.direction = doorDirections[dir];
+        this.distance = doorDistances[dir % 2] + padding;
     }
 
     void Update()
@@ -22,7 +35,6 @@ public class Door : MonoBehaviour
             player.position = (Vector2)transform.position + direction.normalized * distance;
         }
     }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,10 +52,17 @@ public class Door : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(direction.normalized * distance));
-        Gizmos.DrawWireSphere(transform.position + (Vector3)(direction.normalized * distance), 0.4f);
+        if (roomParity == 1)
+        {
+            Gizmos.color = Color.green;
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+        }
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(direction * distance));
+        Gizmos.DrawWireSphere(transform.position + (Vector3)(direction * distance), 0.4f);
     }
 }
