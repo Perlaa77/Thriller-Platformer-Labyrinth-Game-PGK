@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    private CameraController cameraController;
+    private Rigidbody2D player;
+
     private Vector2 direction = new(1, 0);
     private static readonly float[] doorDistances =
     {
@@ -18,7 +21,10 @@ public class Door : MonoBehaviour
         new(-1, 0) //left
     };
 
-    private Rigidbody2D player;
+    void Awake()
+    {
+        cameraController = Camera.main.GetComponent<CameraController>();
+    }
 
     public void Init(int parity, int dir, float padding)
     {
@@ -33,6 +39,7 @@ public class Door : MonoBehaviour
         {
             player.linearVelocity = Vector2.zero;
             player.position = (Vector2)transform.position + direction.normalized * distance;
+            cameraController.MoveCamera(Vector2Int.RoundToInt(direction));
         }
     }
 

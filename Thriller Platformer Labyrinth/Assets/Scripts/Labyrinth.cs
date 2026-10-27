@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Labyrinth : MonoBehaviour
 {
+    private CameraController cameraController;
+
     [SerializeField] private int rows;
     [SerializeField] private int columns;
     private static readonly Vector2 roomSize = new(19.2f, 10.8f);
@@ -20,8 +22,15 @@ public class Labyrinth : MonoBehaviour
         new(-1, 0) //left
     };
 
+    void Awake()
+    {
+        cameraController = Camera.main.GetComponent<CameraController>();
+    }
+
     void Start()
     {
+        cameraController.SetSpacing(padding);
+
         if ((rows == 0) || (columns == 0))
         {
             Debug.Log($"Either rows or columns are set to 0.");
