@@ -4,7 +4,7 @@ public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 4f;
-    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float jumpForce = 6f;
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;

@@ -6,15 +6,15 @@ public class Labyrinth : MonoBehaviour
 
     [SerializeField] private int rows;
     [SerializeField] private int columns;
-    private static readonly Vector2 roomSize = new(19.2f, 10.8f);
-    [SerializeField] private float padding = 4f;
+    private static readonly Vector2 roomSize = new(19.2f, 10.8f); // Ustalona wielkoœæ pokoju - zgodna z prefabem i rozdzielczoœci¹ typowego ekranu
+    [SerializeField] private float padding = 4f; // Przestrzeñ pomiêdzy pokojami
     [SerializeField] private Room roomPrefab;
-    private Room[,] labyrinthGrid;
+    private Room[,] labyrinthGrid; // Siatka pokojów
 
-    private bool[,] alreadyInMaze;
-    private int[,] directionOfStepInWalk;
+    private bool[,] alreadyInMaze; // Siatka z info czy dany pokój jest ju¿ czêœci¹ labiryntu
+    private int[,] directionOfStepInWalk; // Siatka z info w którym kierunku poszed³ algorytm z danego pokoju
 
-    private static readonly Vector2Int[] connectionDirections =
+    private static readonly Vector2Int[] connectionDirections = // Ustalone info o kierunkach po³¹czeñ
     {
         new(0, 1), //top
         new(1, 0), //right
@@ -29,24 +29,25 @@ public class Labyrinth : MonoBehaviour
 
     void Start()
     {
-        cameraController.SetSpacing(padding);
+        cameraController.SetSpacing(padding); // Ustawienie odleg³oœci do przesuwania kamery
 
         if ((rows == 0) || (columns == 0))
         {
             Debug.Log($"Either rows or columns are set to 0.");
             return;
         }
-            labyrinthGrid = new Room[columns, rows];
+        labyrinthGrid = new Room[columns, rows];
 
-        GenerateLabyrinthMap();
+        GenerateLabyrinthMap(); // Wygenerowanie pokojów w labiryncie
 
         alreadyInMaze = new bool[columns, rows];
         directionOfStepInWalk= new int[columns, rows];
         alreadyInMaze[Random.Range(0, columns), Random.Range(0, rows)] = true;
 
-        GenerateConnections();
+        GenerateConnections(); // Ustalenie po³¹czeñ pokojów w labiryncie
     }
 
+    // Wygenerowanie pokojów w labiryncie
     void GenerateLabyrinthMap()
     {
         for(int row = 0; row < rows; row++)
@@ -62,13 +63,14 @@ public class Labyrinth : MonoBehaviour
         }
     }
 
-    // Wilson's algorithm
+    // Ustalenie po³¹czeñ pokojów w labiryncie - algorytm Wilsona
     void GenerateConnections()
     {
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)
             {
+                // Przejœcie teoretyczne - wyznaczenie mo¿liwych po³¹czeñ
                 Vector2Int currentRoom = new Vector2Int(col, row);
                 while (!alreadyInMaze[currentRoom.x, currentRoom.y])
                 {
@@ -83,6 +85,7 @@ public class Labyrinth : MonoBehaviour
 
                 }
 
+                // Faktyczne po³¹czenie wraz z dodniem drzwi w pokojach
                 currentRoom = new Vector2Int(col, row);
                 while (!alreadyInMaze[currentRoom.x, currentRoom.y])
                 {
@@ -98,6 +101,7 @@ public class Labyrinth : MonoBehaviour
         }
     }
 
+    // Wizualizacja po³¹czeñ pokojów w labiryncie
     //private void OnDrawGizmos()
     //{
     //    if (labyrinthGrid == null)

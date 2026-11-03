@@ -5,22 +5,22 @@ public class Door : MonoBehaviour
     private CameraController cameraController;
     private Rigidbody2D player;
 
-    private Vector2 direction = new(1, 0);
-    private static readonly float[] doorDistances =
+    private Vector2 direction = new(1, 0); // Kierunek, w który gracz bêdzie przeniesiony
+    private static readonly float[] doorDistances = // Ustalone odleg³oœci pomiêdzy drzwiami
     {
         3.7f, //top<->bottom
         3.2f //right<->left
     };
-    private float distance = 0;
-    public int roomParity = 0;
-    private static readonly Vector2Int[] doorDirections =
+    private float distance = 0; // Odleg³oœæ o jak¹ zostanie przeniesiony gracz
+    public int roomParity = 0; // S¹siaduj¹ce pokoje maj¹ inne parzystoœci, by drzwi ³¹czy³y siê poprawnie
+    private static readonly Vector2Int[] doorDirections = // Ustalone kierunki do wyboru
     {
         new(0, 1), //top
         new(1, 0), //right
         new(0, -1), //bottom
         new(-1, 0) //left
     };
-
+    
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
@@ -33,6 +33,7 @@ public class Door : MonoBehaviour
         this.distance = doorDistances[dir % 2] + padding;
     }
 
+    // Sprawdzenie czy gracz chce przejœæ przez drzwi
     void Update()
     {
         if ((player != null) && Input.GetKeyDown(KeyCode.DownArrow))
@@ -59,6 +60,7 @@ public class Door : MonoBehaviour
         }
     }
 
+    // Wizualizacja dzia³ania drzwi
     private void OnDrawGizmos()
     {
         if (roomParity == 1)

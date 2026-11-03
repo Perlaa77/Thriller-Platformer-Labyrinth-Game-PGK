@@ -3,10 +3,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private float transitionTime = 0.4f;
-    private Vector3 targetPosition;
-    private Vector3 velocity;
-    private Vector2 roomSpacingBase = new(19.2f, 10.8f);
-    private Vector2 roomSpacing;
+    private Vector3 targetPosition; // Docelowa pozycja
+    private Vector3 velocity; // Prêdkoœæ przemieszczenia kamery
+    private Vector2 roomSpacingBase = new(19.2f, 10.8f); // Ustalone podstawowe odleg³oœci przesuniêcia
+    private Vector2 roomSpacing; // Odleg³oœæ przesuniêcia kamery, z wliczon¹ przestrzeni¹ pomiêdzy pokojami
 
     void Start()
     {
@@ -19,11 +19,13 @@ public class CameraController : MonoBehaviour
         roomSpacing.y = roomSpacingBase.y + padding;
     }
 
+    // Aktywne przesuwanie kamery do wyznaczonego celu
     void LateUpdate()
     {
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, transitionTime);
     }
 
+    // Wyznaczenie nowego celu za pomoc¹ kierunku
     public void MoveCamera(Vector2Int direction)
     {
         targetPosition += (Vector3)Vector2.Scale(direction, roomSpacing);
