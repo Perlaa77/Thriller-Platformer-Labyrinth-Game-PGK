@@ -60,7 +60,7 @@ MonoBehaviour:
   <connectLeft>k__BackingField: 0
   doorPrefab: {fileID: 9098632212053197335, guid: fb1fd313af357334296e0c3e9787fed9, type: 3}
   spotlightPrefab: {fileID: 874200099954523560, guid: 390d4e8680bcef848bfb0bda9f217372, type: 3}
-  torchPrefab: {fileID: 874200099954523560, guid: 390d4e8680bcef848bfb0bda9f217372, type: 3}
+  torchPrefab: {fileID: 874200099954523560, guid: 532436e2cca14bb43907ae6c75748642, type: 3}
   chanceForLight: 3
 --- !u!1 &1326904005679001457
 GameObject:
