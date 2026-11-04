@@ -36,21 +36,20 @@ public class Labyrinth : MonoBehaviour
             Debug.Log($"Either rows or columns are set to 0.");
             return;
         }
-        labyrinthGrid = new Room[columns, rows];
 
         GenerateLabyrinthMap(); // Wygenerowanie pokojów w labiryncie
 
-        alreadyInMaze = new bool[columns, rows];
-        directionOfStepInWalk= new int[columns, rows];
-        alreadyInMaze[Random.Range(0, columns), Random.Range(0, rows)] = true;
-
         GenerateConnections(); // Ustalenie po³¹czeñ pokojów w labiryncie
+
+        AddSpecialRooms();
     }
 
     // Wygenerowanie pokojów w labiryncie
     void GenerateLabyrinthMap()
     {
-        for(int row = 0; row < rows; row++)
+        labyrinthGrid = new Room[columns, rows];
+
+        for (int row = 0; row < rows; row++)
         {
             for(int col = 0; col < columns; col++)
             {
@@ -66,6 +65,10 @@ public class Labyrinth : MonoBehaviour
     // Ustalenie po³¹czeñ pokojów w labiryncie - algorytm Wilsona
     void GenerateConnections()
     {
+        alreadyInMaze = new bool[columns, rows];
+        directionOfStepInWalk = new int[columns, rows];
+        alreadyInMaze[Random.Range(0, columns), Random.Range(0, rows)] = true;
+
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)
@@ -99,6 +102,26 @@ public class Labyrinth : MonoBehaviour
                 }
             }
         }
+    }
+
+    // Dodanie pokojów specjalnych
+    void AddSpecialRooms()
+    {
+        // Pokój startowy / koñcowy
+        Vector3 positionStartRoom = transform.position + new Vector3(-1 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
+        Room startRoom = Instantiate(roomPrefab, positionStartRoom, Quaternion.identity, transform);
+        startRoom.Init(-1, rows - 1, padding);
+        startRoom.name = $"Starting/Ending Room: ({-1},{rows - 1})";
+        startRoom.Connect(1);
+        labyrinthGrid[0, rows - 1].Connect(3);
+
+        // Pokój z zak³adnikiem
+        Vector3 positionMidRoom = transform.position + new Vector3(columns * (roomSize.x + padding), 0, 0);
+        Room midRoom = Instantiate(roomPrefab, positionMidRoom, Quaternion.identity, transform);
+        midRoom.Init(columns, 0, padding);
+        midRoom.name = $"Midpoint Room: ({columns},{0})";
+        midRoom.Connect(3);
+        labyrinthGrid[columns - 1, 0].Connect(1);
     }
 
     // Wizualizacja po³¹czeñ pokojów w labiryncie
