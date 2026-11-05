@@ -142,6 +142,16 @@ public class Labyrinth : MonoBehaviour
         cameraController.SnapCamera(positionStartRoom);
     }
 
+    // Reset labityntu - nowe po³¹czenia
+    public void ResetLabyrinth()
+    {
+        foreach (Room room in labyrinthGrid)
+        {
+            room.DisconnectAll();
+        }
+        GenerateConnections();
+    }
+
     // Wizualizacja po³¹czeñ pokojów w labiryncie
     //private void OnDrawGizmos()
     //{
