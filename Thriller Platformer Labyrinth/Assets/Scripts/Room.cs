@@ -12,7 +12,7 @@ public class Room : MonoBehaviour
     [field: SerializeField] public bool connectBottom { get; set; }
     [field: SerializeField] public bool connectLeft { get; set; }
 
-    public int parity => (row + column) % 2; // Parzystoœæ dla poprawnego uk³adania drzwi
+    public int parity = 0; // Parzystoœæ dla poprawnego uk³adania drzwi
     private float roomPadding; // Przestrzeñ pomiêdzy pokojami
 
     [SerializeField] private Door doorPrefab;
@@ -49,12 +49,42 @@ public class Room : MonoBehaviour
     };
 
 
-    public void Init(int c, int r, float p)
+    public void Init(int c, int r, float p, bool special = false)
     {
         this.row = r;
         this.column = c;
         this.roomPadding = p;
-        SetLighting();
+        parity = (row + column) % 2;
+
+        if (!special )
+        {
+            SetLighting();
+        }
+        else
+        {
+            if (column == -1) // start room
+            {
+                LightZone light = Instantiate(spotlightPrefab, transform);
+                light.transform.localPosition = new Vector2(6.1f, 1.4f);
+                lights.Add(light);
+
+                LightZone bigLight = Instantiate(spotlightPrefab, transform);
+                bigLight.transform.localPosition = new Vector2(-9.3f, 5.2f);
+                bigLight.transform.localRotation = Quaternion.Euler(0f, 0f, 209f);
+                lights.Add(bigLight);
+            }
+            else // midpoint room
+            {
+                LightZone light = Instantiate(spotlightPrefab, transform);
+                light.transform.localPosition = new Vector2(-6.3f, 1.3f);
+                lights.Add(light);
+
+                LightZone bigLight = Instantiate(spotlightPrefab, transform);
+                bigLight.transform.localPosition = new Vector2(9.3f, 5.2f);
+                bigLight.transform.localRotation = Quaternion.Euler(0f, 0f, 149f);
+                lights.Add(bigLight);
+            }
+        }
     }
 
     // Dodanie œwiate³ do pokoju

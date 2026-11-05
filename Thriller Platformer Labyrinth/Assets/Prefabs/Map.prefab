@@ -47,4 +47,6 @@ MonoBehaviour:
   rows: 3
   columns: 3
   padding: 4
-  roomPrefab: {fileID: 1428204647382305928, guid: 0f607a12493b1ab49a7f1084f2a37f8e, type: 3}
+  roomPrefab: {fileID: 1428204647382305928, guid: afab8b0768addbe48a2b9c2104ef7776, type: 3}
+  startRoomPrefab: {fileID: 1428204647382305928, guid: 920f7f5224b863147b0ab1b8a76713d3, type: 3}
+  midpointRoomPrefab: {fileID: 1428204647382305928, guid: 69e9e858d5e4f6444b5a44281adb97f9, type: 3}

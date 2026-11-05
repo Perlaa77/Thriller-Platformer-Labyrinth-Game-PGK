@@ -9,6 +9,8 @@ public class Labyrinth : MonoBehaviour
     private static readonly Vector2 roomSize = new(19.2f, 10.8f); // Ustalona wielkoœæ pokoju - zgodna z prefabem i rozdzielczoœci¹ typowego ekranu
     [SerializeField] private float padding = 4f; // Przestrzeñ pomiêdzy pokojami
     [SerializeField] private Room roomPrefab;
+    [SerializeField] private Room startRoomPrefab;
+    [SerializeField] private Room midpointRoomPrefab;
     private Room[,] labyrinthGrid; // Siatka pokojów
 
     private bool[,] alreadyInMaze; // Siatka z info czy dany pokój jest ju¿ czêœci¹ labiryntu
@@ -102,6 +104,10 @@ public class Labyrinth : MonoBehaviour
                 }
             }
         }
+
+        // Dodanie po³¹czeñ z labiryntu do pokoi specjalnych
+        labyrinthGrid[0, rows - 1].Connect(3);
+        labyrinthGrid[columns - 1, 0].Connect(1);
     }
 
     // Dodanie pokojów specjalnych
@@ -109,19 +115,17 @@ public class Labyrinth : MonoBehaviour
     {
         // Pokój startowy / koñcowy
         Vector3 positionStartRoom = transform.position + new Vector3(-1 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
-        Room startRoom = Instantiate(roomPrefab, positionStartRoom, Quaternion.identity, transform);
-        startRoom.Init(-1, rows - 1, padding);
+        Room startRoom = Instantiate(startRoomPrefab, positionStartRoom, Quaternion.identity, transform);
+        startRoom.Init(-1, rows - 1, padding, true);
         startRoom.name = $"Starting/Ending Room: ({-1},{rows - 1})";
         startRoom.Connect(1);
-        labyrinthGrid[0, rows - 1].Connect(3);
 
         // Pokój z zak³adnikiem
         Vector3 positionMidRoom = transform.position + new Vector3(columns * (roomSize.x + padding), 0, 0);
-        Room midRoom = Instantiate(roomPrefab, positionMidRoom, Quaternion.identity, transform);
-        midRoom.Init(columns, 0, padding);
+        Room midRoom = Instantiate(midpointRoomPrefab, positionMidRoom, Quaternion.identity, transform);
+        midRoom.Init(columns, 0, padding, true);
         midRoom.name = $"Midpoint Room: ({columns},{0})";
         midRoom.Connect(3);
-        labyrinthGrid[columns - 1, 0].Connect(1);
     }
 
     // Wizualizacja po³¹czeñ pokojów w labiryncie
