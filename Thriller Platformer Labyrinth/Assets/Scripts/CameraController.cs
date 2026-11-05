@@ -30,4 +30,13 @@ public class CameraController : MonoBehaviour
     {
         targetPosition += (Vector3)Vector2.Scale(direction, roomSpacing);
     }
+
+    // Nag³e przeniesienie kamery
+    public void SnapCamera(Vector3 pos)
+    {
+        Vector3 position = new Vector3(pos.x, pos.y, transform.position.z);
+        targetPosition = position;
+        transform.position = position;
+        velocity = Vector3.zero;
+    }
 }

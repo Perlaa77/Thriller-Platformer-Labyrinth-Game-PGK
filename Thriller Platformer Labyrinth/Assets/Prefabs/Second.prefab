@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2320172981129939981
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 590365129374955040, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b7c0f8da40f497e4593d457791d84822, type: 2}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381561771087984387, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073201116834465859, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3073201116834465859, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368569458240175366, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256362725268742617, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471915814128427193, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_Name
+      value: Second
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471915814128427193, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_TagString
+      value: Second
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543757574068144476, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2270365967481455630, guid: bf8c8d54521c9a34ebe5edce8e0222d5, type: 3}
+    m_RemovedComponents:
+    - {fileID: 3963596971568874646, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5471915814128427193, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1476262310348138952}
+    - targetCorrespondingSourceObject: {fileID: 5471915814128427193, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7400978091160142215}
+  m_SourcePrefab: {fileID: 100100000, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+--- !u!1 &7764996828558404788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5471915814128427193, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+  m_PrefabInstance: {fileID: 2320172981129939981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1476262310348138952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764996828558404788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7c8b01ae29a0f419e1ebb4c9c036ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SecondController
+  moveSpeed: 6
+  jumpForce: 18
+  groundCheck: {fileID: 6140022187243872348, guid: 6d6a2e908aa5bd144a7215325c1d2dfa, type: 3}
+  checkRadius: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!114 &7400978091160142215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764996828558404788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 0
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.335, y: -1.26, z: 0}
+  - {x: -0.335, y: 1.26, z: 0}
+  - {x: 0.335, y: 1.26, z: 0}
+  - {x: 0.335, y: -1.26, z: 0}
+  m_ShapePathHash: 0
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 8854905759443387729}
+  m_ShadowShape2DProvider:
+    rid: 2525880015909552128
+  m_ShadowCastingSource: 2
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.23498535, y: 1.1599884, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0.1
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 2
+  m_PreviousTrimEdge: 0.1
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowShape2DSource: {fileID: 8854905759443387729}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2525880015909552128
+      type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data: 
+--- !u!212 &8854905759443387729 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6543757574068144476, guid: 5b285cbbf2ff8d84ba26d2f1dd9b49bd, type: 3}
+  m_PrefabInstance: {fileID: 2320172981129939981}
+  m_PrefabAsset: {fileID: 0}

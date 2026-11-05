@@ -1,8 +1,11 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Labyrinth : MonoBehaviour
 {
     private CameraController cameraController;
+    private Rigidbody2D player;
+    private Rigidbody2D second;
 
     [SerializeField] private int rows;
     [SerializeField] private int columns;
@@ -24,9 +27,12 @@ public class Labyrinth : MonoBehaviour
         new(-1, 0) //left
     };
 
+
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
+        player = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+        second = GameObject.FindWithTag("Second").GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -110,7 +116,7 @@ public class Labyrinth : MonoBehaviour
         labyrinthGrid[columns - 1, 0].Connect(1);
     }
 
-    // Dodanie pokojów specjalnych
+    // Dodanie pokojów specjalnych oraz poprawne ustawienie gracza, porwanego i kamery
     void AddSpecialRooms()
     {
         // Pokój startowy / koñcowy
@@ -126,6 +132,14 @@ public class Labyrinth : MonoBehaviour
         midRoom.Init(columns, 0, padding, true);
         midRoom.name = $"Midpoint Room: ({columns},{0})";
         midRoom.Connect(3);
+
+        player.position = (Vector2)positionStartRoom + new Vector2(-5.6f, -1.3f);
+        player.linearVelocity = Vector2.zero;
+
+        second.position = (Vector2)positionMidRoom + new Vector2(5.6f, -1.5f);
+        second.linearVelocity = Vector2.zero;
+
+        cameraController.SnapCamera(positionStartRoom);
     }
 
     // Wizualizacja po³¹czeñ pokojów w labiryncie
