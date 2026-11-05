@@ -4,29 +4,31 @@ public class FearManager : MonoBehaviour
 {
     public float currentFear = 0f;
     public float maxFear = 100f;
-    public float fearIncreaseRate = 5f; // Wzrost na sekundê w mroku
-    public float fearDecreaseRate = 15f; // Spadek na sekundê w œwietle
 
-    private int activeLightZones = 0; // Licznik nak³adaj¹cych siê stref
+    // Bazowe tempo w neutralnej strefie (np. powolny wzrost w zwyk³ym mroku)
+    public float baseFearRate = 5f;
+
+    // Aktualna suma modyfikatorów ze wszystkich stref
+    private float currentZoneModifier = 0f;
 
     void Update()
     {
-        if (activeLightZones == 0)
-            currentFear += fearIncreaseRate * Time.deltaTime;
-        else
-            currentFear -= fearDecreaseRate * Time.deltaTime;
+        // Jeœli modifier jest ujemny (œwiat³o/bezpieczeñstwo), strach spada. 
+        // Jeœli dodatni lub zero (mrok), strach roœnie w tempie bazowym.
+        float finalFearRate = baseFearRate - currentZoneModifier;
 
+        currentFear += finalFearRate * Time.deltaTime;
         currentFear = Mathf.Clamp(currentFear, 0, maxFear);
     }
 
-    // Do wywo³ywania z zewn¹trz przez eventy (np. nag³y skok strachu)
     public void AddInstantFear(float amount)
     {
         currentFear = Mathf.Clamp(currentFear + amount, 0, maxFear);
     }
 
-    public void ModifyLightZoneCount(int amount)
+    // Wywo³ywane przez strefy przy wejœciu/wyjœciu
+    public void AddZoneModifier(float modifierAmount)
     {
-        activeLightZones += amount;
+        currentZoneModifier += modifierAmount;
     }
 }

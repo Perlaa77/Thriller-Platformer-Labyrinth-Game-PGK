@@ -1,17 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-public class LightZone : MonoBehaviour
+// Dziedziczy po EnvironmentZone zamiast MonoBehaviour
+public class LightZone : EnvironmentZone
 {
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            other.GetComponent<FearManager>().ModifyLightZoneCount(1);
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            other.GetComponent<FearManager>().ModifyLightZoneCount(-1);
-    }
+    //void Awake()
+    //{
+    //    // Nadpisujemy safetyMultiplier z klasy bazowej sztywn¹ wartoœci¹ domyœln¹ 
+    //    // starego systemu, aby nie psuæ balansu w ju¿ ustawionych prefabrykatach.
+    //    // Jeœli wczeœniej œwiat³o zdejmowa³o strach z prêdkoœci¹ 15 na sekundê:
+    //    safetyMultiplier = 100f;
+    //}
 }
