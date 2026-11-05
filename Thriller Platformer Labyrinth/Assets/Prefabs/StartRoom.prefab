@@ -231,6 +231,7 @@ Transform:
   - {fileID: 2883248273418067156}
   - {fileID: 1755779022156585815}
   - {fileID: 4017355465695785645}
+  - {fileID: 7283468118714493279}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1428204647382305928
@@ -1691,3 +1692,65 @@ MonoBehaviour:
     - rid: 2525880128901218392
       type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!1001 &5098604056286127109
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2430099993853863386}
+    m_Modifications:
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.670073
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5242324
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907336232660302583, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+      propertyPath: m_Name
+      value: ExitDoor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+--- !u!4 &7283468118714493279 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2582236911662845274, guid: 75298d51bae4dd24b9a1457b451fa8c6, type: 3}
+  m_PrefabInstance: {fileID: 5098604056286127109}
+  m_PrefabAsset: {fileID: 0}

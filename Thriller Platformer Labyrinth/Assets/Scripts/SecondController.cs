@@ -28,32 +28,12 @@ public class SecondController : MonoBehaviour
 
     private void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            jumpPressed = true;
-        }
-
-        if (horizontalInput != 0)
-        {
-            sr.flipX = horizontalInput < 0;
-        }
+        return;
     }
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer) != null;
-
-        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
-
-        if (jumpPressed && isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
-
-        jumpPressed = false;
+        return;
     }
 
     private void OnDrawGizmosSelected()
