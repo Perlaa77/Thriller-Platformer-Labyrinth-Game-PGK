@@ -4,7 +4,7 @@ public class ExitDoor : MonoBehaviour
 {
     private CameraController cameraController;
     private Rigidbody2D player;
-
+    private bool inMenu = true;
 
     void Awake()
     {
@@ -16,7 +16,18 @@ public class ExitDoor : MonoBehaviour
     {
         if ((player != null) && Input.GetKeyDown(KeyCode.DownArrow))
         {
-            cameraController.MoveCamera(Vector2Int.RoundToInt(new Vector2Int(-1, 0)));
+            if (inMenu)
+            {
+                inMenu= false;
+                player.GetComponent<MovementController>().enabled = true;
+                cameraController.MoveCamera(Vector2Int.RoundToInt(new Vector2Int(1, 0)));
+            }
+            else
+            {
+                inMenu = true;
+                player.GetComponent<MovementController>().enabled = false;
+                cameraController.MoveCamera(Vector2Int.RoundToInt(new Vector2Int(-1, 0)));
+            }
         }
     }
 

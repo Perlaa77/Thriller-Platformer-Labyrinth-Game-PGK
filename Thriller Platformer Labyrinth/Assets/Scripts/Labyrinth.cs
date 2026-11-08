@@ -49,7 +49,9 @@ public class Labyrinth : MonoBehaviour
 
         GenerateConnections(); // Ustalenie po³¹czeñ pokojów w labiryncie
 
-        AddSpecialRooms();
+        AddSpecialRooms(); // Dodanie startu i midpointa
+
+        PositionsReset(); //Ustawienie gracza, porwanego i kamery
     }
 
     // Wygenerowanie pokojów w labiryncie
@@ -116,7 +118,7 @@ public class Labyrinth : MonoBehaviour
         labyrinthGrid[columns - 1, 0].Connect(1);
     }
 
-    // Dodanie pokojów specjalnych oraz poprawne ustawienie gracza, porwanego i kamery
+    // Dodanie pokojów specjalnych
     void AddSpecialRooms()
     {
         // Pokój startowy / koñcowy
@@ -132,14 +134,21 @@ public class Labyrinth : MonoBehaviour
         midRoom.Init(columns, 0, padding, true);
         midRoom.name = $"Midpoint Room: ({columns},{0})";
         midRoom.Connect(3);
+    }
 
+    // Przeniesienie gracza, porwanego i kamery do pozycji pocz¹tkowych
+    public void PositionsReset()
+    {
+        Vector3 positionStartRoom = transform.position + new Vector3(-1 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
         player.position = (Vector2)positionStartRoom + new Vector2(-5.6f, -1.3f);
         player.linearVelocity = Vector2.zero;
 
+        Vector3 positionMidRoom = transform.position + new Vector3(columns * (roomSize.x + padding), 0, 0);
         second.position = (Vector2)positionMidRoom + new Vector2(5.6f, -1.5f);
         second.linearVelocity = Vector2.zero;
 
-        cameraController.SnapCamera(positionStartRoom);
+        Vector3 positionInstructions = transform.position + new Vector3(-2 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
+        cameraController.SnapCamera(positionInstructions);
     }
 
     // Reset labityntu - nowe po³¹czenia
