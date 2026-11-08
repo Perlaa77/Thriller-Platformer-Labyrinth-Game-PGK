@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -27,12 +28,21 @@ public class Labyrinth : MonoBehaviour
         new(-1, 0) //left
     };
 
+    [SerializeField] private CanvasGroup fadeScreen;
+    [SerializeField] private float fadeTime = 0.5f;
+    [SerializeField] private FearManager playerFearManager;
+    [SerializeField] private FearManager secondFearManager;
+    public bool inMenu = true;
+    public bool fading;
+
 
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
         player = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
         second = GameObject.FindWithTag("Second").GetComponent<Rigidbody2D>();
+        playerFearManager = GameObject.FindWithTag("Player").GetComponent<FearManager>();
+        secondFearManager = GameObject.FindWithTag("Second").GetComponent<FearManager>();
     }
 
     void Start()
@@ -139,10 +149,14 @@ public class Labyrinth : MonoBehaviour
     // Przeniesienie gracza, porwanego i kamery do pozycji pocz¹tkowych
     public void PositionsReset()
     {
+        player.GetComponent<MovementController>().enabled = false;
+        playerFearManager.currentFear = 0;
         Vector3 positionStartRoom = transform.position + new Vector3(-1 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
         player.position = (Vector2)positionStartRoom + new Vector2(-5.6f, -1.3f);
         player.linearVelocity = Vector2.zero;
 
+        second.GetComponent<SecondController>().enabled = false;
+        secondFearManager.currentFear = 0;
         Vector3 positionMidRoom = transform.position + new Vector3(columns * (roomSize.x + padding), 0, 0);
         second.position = (Vector2)positionMidRoom + new Vector2(5.6f, -1.5f);
         second.linearVelocity = Vector2.zero;
@@ -159,6 +173,37 @@ public class Labyrinth : MonoBehaviour
             room.DisconnectAll();
         }
         GenerateConnections();
+    }
+
+    // Przejœcie do menu - koniec gry
+    public void ResetGame()
+    {
+        if(fading || inMenu)
+        {
+            return;
+        }
+        StartCoroutine(EnterMenuRoutine());
+    }
+
+    private IEnumerator EnterMenuRoutine()
+    {
+        fading = true;
+        player.GetComponent<MovementController>().enabled = false;
+        yield return StartCoroutine(Fade(1)); // czeka na fade out
+        PositionsReset();
+        ResetLabyrinth();
+        yield return StartCoroutine(Fade(0)); // czeka na fade in
+        inMenu = true;
+        fading = false;
+    }
+
+    private IEnumerator Fade(float fade)
+    {
+        while (!Mathf.Approximately(fadeScreen.alpha, fade))
+        {
+            fadeScreen.alpha = Mathf.MoveTowards(fadeScreen.alpha, fade, Time.deltaTime / fadeTime);
+            yield return null;
+        }
     }
 
     // Wizualizacja po³¹czeñ pokojów w labiryncie

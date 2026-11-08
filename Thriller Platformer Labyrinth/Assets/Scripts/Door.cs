@@ -50,8 +50,6 @@ public class Door : MonoBehaviour
                 second.position = (Vector2)transform.position + direction.normalized * distance;
             }
         }
-
-
     }
 
     void OnTriggerEnter2D(Collider2D other)

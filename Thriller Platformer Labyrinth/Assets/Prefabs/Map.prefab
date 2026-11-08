@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2211938407278243781}
   m_Layer: 0
   m_Name: Map
-  m_TagString: Untagged
+  m_TagString: Game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,3 +50,9 @@ MonoBehaviour:
   roomPrefab: {fileID: 1428204647382305928, guid: afab8b0768addbe48a2b9c2104ef7776, type: 3}
   startRoomPrefab: {fileID: 1428204647382305928, guid: 920f7f5224b863147b0ab1b8a76713d3, type: 3}
   midpointRoomPrefab: {fileID: 1428204647382305928, guid: 69e9e858d5e4f6444b5a44281adb97f9, type: 3}
+  fadeScreen: {fileID: 7398781374872853593, guid: 3b37854cf77fb9e49a9d1663f5cbaa3a, type: 3}
+  fadeTime: 0.3
+  playerFearManager: {fileID: 0}
+  secondFearManager: {fileID: 0}
+  inMenu: 1
+  fading: 0

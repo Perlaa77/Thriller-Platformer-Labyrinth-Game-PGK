@@ -3,12 +3,15 @@ using UnityEngine;
 public class ExitDoor : MonoBehaviour
 {
     private CameraController cameraController;
+    private Labyrinth game;
     private Rigidbody2D player;
-    private bool inMenu = true;
+    public int ending = 0; // 0 sprawdzenie instrukcji, 1 wyjœcie z porwanym, 2 wyjœcie bez porwanego bo po nim
+    // dodaæ obiekt z tekstem i umieœciæ na lewo od startu w kodzie Labyrinth
 
     void Awake()
     {
         cameraController = Camera.main.GetComponent<CameraController>();
+        game = GameObject.FindWithTag("Game").GetComponent<Labyrinth>();
     }
 
     // Sprawdzenie czy gracz chce przejœæ przez drzwi
@@ -16,17 +19,15 @@ public class ExitDoor : MonoBehaviour
     {
         if ((player != null) && Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (inMenu)
+            if (game.inMenu)
             {
-                inMenu= false;
+                game.inMenu = false;
                 player.GetComponent<MovementController>().enabled = true;
                 cameraController.MoveCamera(Vector2Int.RoundToInt(new Vector2Int(1, 0)));
             }
             else
             {
-                inMenu = true;
-                player.GetComponent<MovementController>().enabled = false;
-                cameraController.MoveCamera(Vector2Int.RoundToInt(new Vector2Int(-1, 0)));
+                game.ResetGame();
             }
         }
     }
