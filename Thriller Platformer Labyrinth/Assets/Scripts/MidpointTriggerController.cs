@@ -1,10 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MidpointTriggerController : MonoBehaviour
 {
     private Labyrinth labirynth;
     private Rigidbody2D second;
-    private bool wasReset = false;
+    public bool wasReset = false;
 
     void Awake()
     {
@@ -19,6 +20,11 @@ public class MidpointTriggerController : MonoBehaviour
             wasReset = true;
             labirynth.ResetLabyrinth();
             second.GetComponent<SecondController>().enabled = true;
+            FearManager secondFear = second.GetComponentInChildren<FearManager>();
+            if (secondFear != null)
+            {
+                secondFear.enabled = true;
+            }
         }
     }
 }

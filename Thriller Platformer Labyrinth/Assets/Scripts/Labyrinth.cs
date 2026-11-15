@@ -16,6 +16,7 @@ public class Labyrinth : MonoBehaviour
     [SerializeField] private Room startRoomPrefab;
     [SerializeField] private Room midpointRoomPrefab;
     private Room[,] labyrinthGrid; // Siatka pokojów
+    private Room midRoom; 
 
     private bool[,] alreadyInMaze; // Siatka z info czy dany pokój jest ju¿ czêœci¹ labiryntu
     private int[,] directionOfStepInWalk; // Siatka z info w którym kierunku poszed³ algorytm z danego pokoju
@@ -140,7 +141,8 @@ public class Labyrinth : MonoBehaviour
 
         // Pokój z zak³adnikiem
         Vector3 positionMidRoom = transform.position + new Vector3(columns * (roomSize.x + padding), 0, 0);
-        Room midRoom = Instantiate(midpointRoomPrefab, positionMidRoom, Quaternion.identity, transform);
+        //Room midRoom = Instantiate(midpointRoomPrefab, positionMidRoom, Quaternion.identity, transform);
+        midRoom = Instantiate(midpointRoomPrefab, positionMidRoom, Quaternion.identity, transform);
         midRoom.Init(columns, 0, padding, true);
         midRoom.name = $"Midpoint Room: ({columns},{0})";
         midRoom.Connect(3);
@@ -151,12 +153,16 @@ public class Labyrinth : MonoBehaviour
     {
         player.GetComponent<MovementController>().enabled = false;
         playerFearManager.currentFear = 0;
+        playerFearManager.currentDeathTimer = 0;
         Vector3 positionStartRoom = transform.position + new Vector3(-1 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
         player.position = (Vector2)positionStartRoom + new Vector2(-5.6f, -1.3f);
         player.linearVelocity = Vector2.zero;
 
         second.GetComponent<SecondController>().enabled = false;
         secondFearManager.currentFear = 0;
+        secondFearManager.enabled = false;
+        secondFearManager.currentDeathTimer = 0;
+        midRoom.GetComponentInChildren<MidpointTriggerController>().wasReset = false;
         Vector3 positionMidRoom = transform.position + new Vector3(columns * (roomSize.x + padding), 0, 0);
         second.position = (Vector2)positionMidRoom + new Vector2(5.6f, -1.5f);
         second.linearVelocity = Vector2.zero;

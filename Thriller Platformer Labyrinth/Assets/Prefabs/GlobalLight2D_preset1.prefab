@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8355218271512445348}
   - component: {fileID: 1018111959199789411}
+  - component: {fileID: 5357663224267976543}
   m_Layer: 0
   m_Name: GlobalLight2D_preset1
   m_TagString: Untagged
@@ -84,3 +85,20 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &5357663224267976543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8799573786717190946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d846a2738fcb540ae82149abd50a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FearLightEffect
+  fearManager: {fileID: 0}
+  globalLight: {fileID: 1018111959199789411}
+  normalIntensity: 0.8
+  maxFearIntensity: 0.1
+  smoothSpeed: 5

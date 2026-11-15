@@ -9,7 +9,7 @@ public class EnvironmentZone : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Second"))
         {
             FearManager manager = other.GetComponent<FearManager>();
             if (manager != null)
@@ -19,7 +19,7 @@ public class EnvironmentZone : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Second"))
         {
             FearManager manager = other.GetComponent<FearManager>();
             if (manager != null)

@@ -5,7 +5,8 @@ public class FearUI : MonoBehaviour
 {
     [Header("Referencje")]
     public Slider fearSlider;
-    public FearManager playerFearManager; // Przeci¹gnij tutaj obiekt gracza
+    public Slider deathSlider; // Drugi pasek (odliczanie do œmierci)
+    public FearManager playerFearManager;
 
     void Start()
     {
@@ -15,16 +16,34 @@ public class FearUI : MonoBehaviour
             return;
         }
 
-        // Dopasuj maksymaln¹ wartoœæ slidera do maksymalnego strachu w mened¿erze
         fearSlider.maxValue = playerFearManager.maxFear;
+
+        if (deathSlider != null)
+        {
+            deathSlider.maxValue = playerFearManager.maxDeathTime;
+            deathSlider.value = 0f;
+            deathSlider.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
-        // P³ynna aktualizacja wype³nienia
-        if (playerFearManager != null && fearSlider != null)
+        if (playerFearManager == null) return;
+
+        if (fearSlider != null)
         {
             fearSlider.value = playerFearManager.currentFear;
+        }
+
+        if (deathSlider != null)
+        {
+            deathSlider.value = playerFearManager.currentDeathTimer;
+
+            bool shouldShowDeathBar = playerFearManager.currentDeathTimer > 0f;
+            if (deathSlider.gameObject.activeSelf != shouldShowDeathBar)
+            {
+                deathSlider.gameObject.SetActive(shouldShowDeathBar);
+            }
         }
     }
 }
