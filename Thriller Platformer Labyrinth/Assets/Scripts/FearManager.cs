@@ -46,6 +46,14 @@ public class FearManager : MonoBehaviour
             {
                 currentFear = 0f;
                 currentDeathTimer = 0f;
+                if (gameObject.CompareTag("Player")) // œmieræ gracza
+                {
+                    game.ending = 2;
+                }
+                else // œmieræ porwanego
+                {
+                    game.ending = 3;
+                }
                 game.ResetGame();
             }
         }

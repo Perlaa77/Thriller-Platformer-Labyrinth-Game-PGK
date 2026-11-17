@@ -27,6 +27,14 @@ public class ExitDoor : MonoBehaviour
             }
             else
             {
+                if (!game.second.GetComponent<SecondController>().enabled) // samotna ucieczka
+                {
+                    game.ending = 1;
+                }
+                else // wspólna ucieczka
+                {
+                    game.ending = 4;
+                }
                 game.ResetGame();
             }
         }

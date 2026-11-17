@@ -1,4 +1,5 @@
 using System.Collections;
+using System.ComponentModel.Design;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class Labyrinth : MonoBehaviour
 {
     private CameraController cameraController;
     private Rigidbody2D player;
-    private Rigidbody2D second;
+    public Rigidbody2D second;
 
     [SerializeField] private int rows;
     [SerializeField] private int columns;
@@ -35,6 +36,47 @@ public class Labyrinth : MonoBehaviour
     [SerializeField] private FearManager secondFearManager;
     public bool inMenu = true;
     public bool fading;
+    [SerializeField] private MenuController menuPrefab;
+    private MenuController menu;
+    public int ending = 0;
+    private static readonly string[][] menuTexts =
+    {
+        new[] // start gry - wprowadzenie i instrukcje
+        {
+            "Thriller Labyrinth",
+            "Gdy w koñcu odkryto kryjówkê porywacza, postanawiasz dzia³aæ i uratowaæ porwanego przyjaciela, zanim wydarzy siê coœ z³ego. Czy jednak uda ci siê przezwyciê¿yæ strach przed ciemnoœci¹?",
+            "U¿ywaj strza³ek w prawo i lewo, aby poruszaæ siê po pokojach. Wciœnij spacjê, aby skoczyæ, oraz strza³kê w dó³, aby przejœæ przez drzwi do kolejnego pokoju.",
+            "Aby rozpocz¹æ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+        },
+        new[] // zakoñczenie 1 - samotna ucieczka
+        {
+            "Tchórz",
+            "NajwyraŸniej nie by³ to wystarczaj¹co przemyœlany plan. Innym powiesz, ¿e by³a to decyzja strategiczna, ale wszyscy wiedz¹, ¿e to ciemnoœæ ciê przerazi³a.",
+            "Zakoñczenie 1/4",
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+        },
+        new[] // zakoñczenie 2 - œmieræ gracza
+        {
+            "Mrok",
+            "Próbowa³eœ siê trzymaæ i walczyæ ze strachem, jednak otaczaj¹ca ciê ciemnoœæ wygra³a.",
+            "Zakoñczenie 2/4",
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+        },
+        new[] // zakoñczenie 3 - œmieræ porwanego
+        {
+            "Uwiêzieni",
+            "Nie tylko ty siê ba³eœ ciemnoœci. Twój przyjaciel nie móg³ jej ju¿ d³u¿ej znieœæ. Pozosta³eœ przy nim, lecz i ciebie dopad³a ciemnoœæ. Teraz oboje bêdziecie w strachu czekaæ na ratunek.",
+            "Zakoñczenie 3/4",
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+        },
+        new[] // zakoñczenie 4 - ucieczka razem z porwanym
+        {
+            "Ucieczka",
+            "Uda³o ci siê uratowaæ przyjaciela i tym samym pokonaæ strach przed ciemnoœci¹. Gratulacje.",
+            "Zakoñczenie 4/4",
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+        }
+    };
 
 
     void Awake()
@@ -60,9 +102,11 @@ public class Labyrinth : MonoBehaviour
 
         GenerateConnections(); // Ustalenie po³¹czeñ pokojów w labiryncie
 
+        AddMenu(); // Dodanie ekranu z instrukcjami / end screen
+
         AddSpecialRooms(); // Dodanie startu i midpointa
 
-        PositionsReset(); //Ustawienie gracza, porwanego i kamery
+        PositionsReset(); //Ustawienie gracza, porwanego i kamery oraz ustawienie ekranu koñcowego
     }
 
     // Wygenerowanie pokojów w labiryncie
@@ -129,6 +173,17 @@ public class Labyrinth : MonoBehaviour
         labyrinthGrid[columns - 1, 0].Connect(1);
     }
 
+    // Dodanie ekranu startowego (menu) / koñcowego (end screen)
+    void AddMenu()
+    {
+        Vector3 positionMenu = transform.position + new Vector3(-2 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
+        menu = Instantiate(menuPrefab, positionMenu, Quaternion.identity);
+        for (int i = 0; i < 4; i++)
+        {
+            menu.SetText(i, menuTexts[ending][i]);
+        }
+    }
+
     // Dodanie pokojów specjalnych
     void AddSpecialRooms()
     {
@@ -148,7 +203,7 @@ public class Labyrinth : MonoBehaviour
         midRoom.Connect(3);
     }
 
-    // Przeniesienie gracza, porwanego i kamery do pozycji pocz¹tkowych
+    // Przeniesienie gracza, porwanego i kamery do pozycji pocz¹tkowych oraz ustawienie ekranu koñcowego
     public void PositionsReset()
     {
         player.GetComponent<MovementController>().enabled = false;
@@ -167,8 +222,13 @@ public class Labyrinth : MonoBehaviour
         second.position = (Vector2)positionMidRoom + new Vector2(5.6f, -1.5f);
         second.linearVelocity = Vector2.zero;
 
-        Vector3 positionInstructions = transform.position + new Vector3(-2 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
-        cameraController.SnapCamera(positionInstructions);
+        for (int i = 0; i < 4; i++)
+        {
+            menu.SetText(i, menuTexts[ending][i]);
+        }
+
+        Vector3 positionMenu = transform.position + new Vector3(-2 * (roomSize.x + padding), (rows - 1) * (roomSize.y + padding), 0);
+        cameraController.SnapCamera(positionMenu);
     }
 
     // Reset labityntu - nowe po³¹czenia

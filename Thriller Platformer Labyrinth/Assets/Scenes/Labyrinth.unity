@@ -697,7 +697,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b37854cf77fb9e49a9d1663f5cbaa3a, type: 3}
---- !u!43 &1103694927
+--- !u!43 &924057602
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -956,7 +956,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 90046534228179726, guid: 6d6a2e908aa5bd144a7215325c1d2dfa, type: 3}
   m_PrefabInstance: {fileID: 651503944}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1651860525
+--- !u!114 &1673869182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1048627448106135819, guid: 6d6a2e908aa5bd144a7215325c1d2dfa, type: 3}
+  m_PrefabInstance: {fileID: 651503944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a40ca825d69ad45be1dc62c78f8d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FearManager
+--- !u!43 &2023129161
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -999,7 +1010,7 @@ Mesh:
     - stream: 0
       offset: 0
       format: 0
-      dimension: 3
+      dimension: 0
     - stream: 0
       offset: 0
       format: 0
@@ -1134,18 +1145,7 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!114 &1673869182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1048627448106135819, guid: 6d6a2e908aa5bd144a7215325c1d2dfa, type: 3}
-  m_PrefabInstance: {fileID: 651503944}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75a40ca825d69ad45be1dc62c78f8d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FearManager
---- !u!43 &2023129161
+--- !u!43 &2028773712
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1188,7 +1188,7 @@ Mesh:
     - stream: 0
       offset: 0
       format: 0
-      dimension: 0
+      dimension: 3
     - stream: 0
       offset: 0
       format: 0
@@ -1497,6 +1497,10 @@ PrefabInstance:
       propertyPath: fadeScreen
       value: 
       objectReference: {fileID: 254650996}
+    - target: {fileID: 2211938407278243781, guid: d5fda43ab1417684083354afb4ed9e48, type: 3}
+      propertyPath: menuPrefab
+      value: 
+      objectReference: {fileID: 5853491958445502542, guid: f3d4aa540c9fae54180bba31907b6411, type: 3}
     - target: {fileID: 2211938407278243781, guid: d5fda43ab1417684083354afb4ed9e48, type: 3}
       propertyPath: roomPrefab
       value: 
