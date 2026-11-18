@@ -45,36 +45,36 @@ public class Labyrinth : MonoBehaviour
         {
             "Thriller Labyrinth",
             "Gdy w koñcu odkryto kryjówkê porywacza, postanawiasz dzia³aæ i uratowaæ porwanego przyjaciela, zanim wydarzy siê coœ z³ego. Czy jednak uda ci siê przezwyciê¿yæ strach przed ciemnoœci¹?",
-            "U¿ywaj strza³ek w prawo i lewo, aby poruszaæ siê po pokojach. Wciœnij spacjê, aby skoczyæ, oraz strza³kê w dó³, aby przejœæ przez drzwi do kolejnego pokoju.",
-            "Aby rozpocz¹æ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+            "U¿ywaj strza³ek w prawo i lewo, aby poruszaæ siê po pokojach. Wciœnij spacjê/strza³kê w górê, aby skoczyæ, oraz strza³kê w dó³, aby przejœæ przez drzwi do kolejnego pokoju.",
+            "Aby rozpocz¹æ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³.\nAby wyjœæ z gry naciœnij Esc."
         },
         new[] // zakoñczenie 1 - samotna ucieczka
         {
             "Tchórz",
             "NajwyraŸniej nie by³ to wystarczaj¹co przemyœlany plan. Innym powiesz, ¿e by³a to decyzja strategiczna, ale wszyscy wiedz¹, ¿e to ciemnoœæ ciê przerazi³a.",
             "Zakoñczenie 1/4",
-            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³.\nAby wyjœæ z gry naciœnij Esc."
         },
         new[] // zakoñczenie 2 - œmieræ gracza
         {
             "Mrok",
             "Próbowa³eœ siê trzymaæ i walczyæ ze strachem, jednak otaczaj¹ca ciê ciemnoœæ wygra³a.",
             "Zakoñczenie 2/4",
-            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³.\nAby wyjœæ z gry naciœnij Esc."
         },
         new[] // zakoñczenie 3 - œmieræ porwanego
         {
             "Uwiêzieni",
             "Nie tylko ty siê ba³eœ ciemnoœci. Twój przyjaciel nie móg³ jej ju¿ d³u¿ej znieœæ. Pozosta³eœ przy nim, lecz i ciebie dopad³a ciemnoœæ. Teraz oboje bêdziecie w strachu czekaæ na ratunek.",
             "Zakoñczenie 3/4",
-            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³.\nAby wyjœæ z gry naciœnij Esc."
         },
         new[] // zakoñczenie 4 - ucieczka razem z porwanym
         {
             "Ucieczka",
             "Uda³o ci siê uratowaæ przyjaciela i tym samym pokonaæ strach przed ciemnoœci¹. Gratulacje.",
             "Zakoñczenie 4/4",
-            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³."
+            "Aby rozpocz¹æ now¹ grê wejdŸ do budynku wciskaj¹c strza³kê w dó³.\nAby wyjœæ z gry naciœnij Esc."
         }
     };
 

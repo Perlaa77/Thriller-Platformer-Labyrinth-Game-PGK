@@ -1,4 +1,5 @@
 using UnityEngine;
+using static System.Net.Mime.MediaTypeNames;
 
 public class CameraController : MonoBehaviour
 {
@@ -17,6 +18,23 @@ public class CameraController : MonoBehaviour
     {
         roomSpacing.x = roomSpacingBase.x + padding;
         roomSpacing.y = roomSpacingBase.y + padding;
+    }
+
+    // Wychodzenie z gry
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            #if (UNITY_EDITOR)
+            {
+                UnityEditor.EditorApplication.isPlaying = false;
+            }
+            #else
+            {
+                Application.Quit();
+            }
+            #endif
+        }
     }
 
     // Aktywne przesuwanie kamery do wyznaczonego celu
