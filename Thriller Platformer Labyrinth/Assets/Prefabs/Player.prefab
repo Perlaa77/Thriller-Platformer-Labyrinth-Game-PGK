@@ -636,7 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FearManager
   currentFear: 0
   maxFear: 100
-  baseFearRate: 5
+  baseFearRate: 10
   maxDeathTime: 5
   currentDeathTimer: 0
   deathRecoveryRate: 2

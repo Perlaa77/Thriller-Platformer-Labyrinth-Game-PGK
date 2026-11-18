@@ -1,6 +1,4 @@
 using UnityEngine;
-using static System.Net.Mime.MediaTypeNames;
-
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private float transitionTime = 0.4f;
